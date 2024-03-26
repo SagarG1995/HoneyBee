@@ -9,7 +9,8 @@ import { fontFamily, fontSize } from '../utils/variables'
 const TermConditionText = ({
     containerStyle,
     textColor,
-    btnTxtColor
+    btnTxtColor,
+    iconColor=undefined
 }) => {
 
     const onPressTerm = () => {
@@ -22,7 +23,7 @@ const TermConditionText = ({
 
     return (
         <View style={[styles.container, containerStyle]}>
-            <Feather name='check-circle' size={normalize(17)} color={colors.themeColor} />
+            <Feather name='check-circle' size={normalize(17)} color={iconColor ?? colors.themeColor} />
             <View style={styles.textContent}>
                 <Text style={[styles.text1, textColor]} adjustsFontSizeToFit numberOfLines={2}>By Signing in to this account , you agree to our
                     <TouchableWithoutFeedback onPress={onPressTerm}>

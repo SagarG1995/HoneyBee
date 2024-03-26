@@ -1,13 +1,25 @@
+import { Dimensions, Platform, StatusBar } from "react-native"
 import { normalize } from "./normalize"
+
+
+export const DEVICE_HEIGHT = Dimensions.get("screen").height
+export const DEVICE_WIDTH = Dimensions.get("screen").width
 
 
 export const images = {
     onboard: require("../assets/images/onboard.png"),
-    loginbg: require("../assets/images/loginbg.png")
+    loginbg: require("../assets/images/loginbg.png"),
+    otpbg:  require("../assets/images/otpbg.png"),
+    signup: require("../assets/images/signupbg.png")
 }
 
 export const icons = {
-    otp: require("../assets/icons/otp.png")
+    otp: require("../assets/icons/otp.png"),
+    girl1: require("../assets/icons/girl1.png"),
+    girl2: require("../assets/icons/girl2.png"),
+    girl3: require("../assets/icons/girl3.png"),
+    paid: require("../assets/icons/paid.png"),
+    free: require("../assets/icons/free.png"),
 }
 
 export const fontFamily = {
@@ -43,3 +55,9 @@ export const staticShadow = {
     shadowRadius: 1,
     elevation: 8
 }
+
+
+export const statusbarHeight = StatusBar.currentHeight
+
+export const is_android = Platform.OS === 'android'
+export const is_ios = Platform.OS === 'ios'

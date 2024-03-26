@@ -17,7 +17,7 @@ const LottieAnim = ({
   )
 }
 
-export default LottieAnim
+export default React.memo(LottieAnim)
 
 const styles = StyleSheet.create({
     lottie:{

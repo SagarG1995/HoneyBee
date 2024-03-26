@@ -6,13 +6,16 @@ import { colors } from '../utils/colors'
 import { fontFamily, fontSize, staticShadow } from '../utils/variables'
 import { useNavigation } from '@react-navigation/native'
 
+
 const AppHeader = ({
-    label= "Click",
-    containerStyle= null,
-    showBackBtn= false,
-    title= "",
-    iconColor= "",
-    showShadow=true
+    label = "Click",
+    containerStyle = null,
+    headingStyle,
+    showBackBtn = false,
+    title = "",
+    iconColor = undefined,
+    showShadow = true,
+    showSearch = false
 }) => {
 
     const navigation = useNavigation()
@@ -27,7 +30,13 @@ const AppHeader = ({
             }
             {
                 title &&
-                <Text style={styles.heading}>{title}</Text>
+                <Text style={[styles.heading, headingStyle]}>{title}</Text>
+            }
+            {
+                showSearch &&
+                <TouchableOpacity style={styles.btn}>
+                    <AntDesign name="search1" size={normalize(15)} color={colors.black} />
+                </TouchableOpacity>
             }
         </View>
     )
@@ -36,24 +45,32 @@ const AppHeader = ({
 export default React.memo(AppHeader)
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         height: normalize(45),
         backgroundColor: colors.white,
-        flexDirection:'row',
+        flexDirection: 'row',
         zIndex: 1,
-    },
-    backBtn:{        
-        width: normalize(40),
-        height: '100%',
-        justifyContent:'center',
+        justifyContent:'space-between',
         alignItems:'center'
     },
-    heading:{
+    backBtn: {
+        width: normalize(40),
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    heading: {
         fontFamily: fontFamily.italic,
         fontSize: fontSize.font15,
-        alignSelf:'center',
+        alignSelf: 'center',
         marginLeft: normalize(15),
-        marginTop: 6,
-        color: colors.black   
+        marginTop: 3,
+        color: colors.black
+    },
+    btn:{
+        width: normalize(40),
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })

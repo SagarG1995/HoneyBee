@@ -1,4 +1,4 @@
-import { ActivityIndicator, StyleSheet, Text, View, ImageRequireSource } from 'react-native'
+import { ActivityIndicator, StyleSheet, Text, View, ImageRequireSource, Image } from 'react-native'
 import React, { FC, useEffect, useState } from 'react'
 import FastImage, { ResizeMode } from 'react-native-fast-image'
 import { colors } from '../utils/colors'
@@ -9,11 +9,16 @@ const CustomImage = ({
   source,
   resizeMode,
   style = null,
-  tintColor
+  tintColor,
 }) => {
 
   const [resizeModeState, setResizeModeState] = useState("contain")
   const [loading, setLoading] = useState(false)
+
+  
+  // useEffect(() => {
+  //   console.log(size);
+  // },[size])
 
   useEffect(() => {
     if (resizeMode === 'cover') {
@@ -29,7 +34,7 @@ const CustomImage = ({
 
   return (
     <FastImage
-      style={style}
+      style={[style]}
       source={ (Number.isInteger(source)) ? source : {...source, priority: FastImage.priority.high}}
       resizeMode={resizeModeState}
       onProgress={() => setLoading(prev => true)}
@@ -44,7 +49,7 @@ const CustomImage = ({
   )
 }
 
-export default CustomImage
+export default React.memo(CustomImage)
 
 const styles = StyleSheet.create({
   loader:{

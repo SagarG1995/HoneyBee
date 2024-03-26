@@ -20,6 +20,7 @@ import {
 import Navigation from './src/navigations/navigation';
 
 
+
 function App(): React.JSX.Element {
   
   const isDarkMode = useColorScheme() === 'dark';
@@ -29,13 +30,15 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+        // backgroundColor={backgroundStyle.backgroundColor}
+        translucent={true} 
+        backgroundColor={'transparent'} 
       />
       <Navigation />
-    </SafeAreaView>
+    </View>
   );
 }
 

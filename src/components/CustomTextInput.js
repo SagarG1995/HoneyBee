@@ -2,15 +2,20 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React, { FC, ReactElement } from 'react'
 import { normalize } from '../utils/normalize'
 import { colors } from '../utils/colors'
+import { fontFamily, fontSize } from '../utils/variables'
 
 
 
 const CustomTextInput = ({
+  textRef,
   leftIcon,
   containerStyle,
+  inputStyle,
   placeholder = "Type...",
-  iconColor = colors.white,
-  placeholderTextColor
+  placeholderTextColor,
+  keyboardType="default",
+  onChangeText=undefined,
+  maxLength=undefined
 }) => {
   return (
     <View style={[styles.container, containerStyle]}>
@@ -19,9 +24,15 @@ const CustomTextInput = ({
         leftIcon
       }
       <TextInput
-        style={styles.input}
+        // ref={(ref) => {
+        //   console.log(ref);
+        // }}
+        style={[styles.input,inputStyle]}
         placeholder={placeholder}
         placeholderTextColor={placeholderTextColor}
+        keyboardType={keyboardType}
+        onChangeText={onChangeText}
+        maxLength={maxLength}
       />
     </View>
   )
@@ -36,12 +47,16 @@ const styles = StyleSheet.create({
     borderBottomColor: colors.white,
     borderBottomWidth: normalize(1),
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    overflow:'hidden'
   },
   input: {
     flex: 1,
-    // backgroundColor: 'red',
-    paddingLeft: normalize(8)
+    paddingLeft: normalize(8),
+    color: colors.black,
+    fontSize: fontSize.font12,
+    fontFamily: fontFamily.regular,
+    marginTop: 3
   }
 
 })
